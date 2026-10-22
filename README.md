@@ -164,3 +164,25 @@ Mudanças, com foco em:
 Projeto acadêmico desenvolvido para demonstrar a evolução de um software
 utilizando boas práticas de versionamento e colaboração.
 >>>>>>> 969f4d903ad14e4c926e44b5f9a386d335108b5f
+
+
+
+
+## Projeto estudado e aprendizados
+
+**Projeto original:** https://github.com/tjeevan/FloodTrackerApp
+
+**Meu fork:** https://github.com/lmm5-web/FloodTrackerApp.git
+
+### Semelhanças com o HidroAlerta
+
+1. Ambos têm como objetivo registrar e acompanhar ocorrências relacionadas a alagamentos.
+2. Ambos utilizam tecnologias web, como HTML, CSS e JavaScript, para construir a interface.
+
+### Diferença
+
+O FloodTrackerApp também contempla registros de saúde pública e educação, enquanto o HidroAlerta tem como foco as ocorrências de alagamentos e chuvas intensas em Palmares–PE.
+
+### Aprendizado aproveitado
+
+Após estudar o FloodTrackerApp, identificarei uma melhoria que possa ser aplicada ao HidroAlerta, adaptando-a às necessidades do projeto e registrando a alteração em um commit.
