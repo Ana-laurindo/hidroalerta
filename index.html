@@ -1,0 +1,223 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="HidroAlerta: sistema acadêmico para registro e acompanhamento de ocorrências relacionadas a alagamentos e chuvas intensas em Palmares - PE.">
+
+    <title>HidroAlerta | Ocorrências em Palmares</title>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <header class="cabecalho">
+        <div class="container navegacao">
+            <a href="#" class="marca" aria-label="HidroAlerta - Página inicial">
+                <span class="marca-icone" aria-hidden="true">≋</span>
+                <span>Hidro<span class="destaque">Alerta</span></span>
+            </a>
+
+            <nav aria-label="Navegação principal">
+                <a href="#inicio">Início</a>
+                <a href="#registrar">Registrar ocorrência</a>
+                <a href="#ocorrencias">Ocorrências</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero" id="inicio">
+            <div class="container hero-conteudo">
+                <div class="hero-texto">
+                    <span class="etiqueta">PALMARES • PERNAMBUCO</span>
+
+                    <h1>Informação que ajuda a cuidar da nossa cidade.</h1>
+
+                    <p>
+                        Registre e acompanhe informações sobre alagamentos
+                        e chuvas intensas em Palmares, em um só lugar.
+                    </p>
+
+                    <div class="hero-acoes">
+                        <a href="#registrar" class="botao botao-principal">
+                            Registrar ocorrência
+                        </a>
+
+                        <a href="#ocorrencias" class="botao botao-secundario">
+                            Consultar registros
+                        </a>
+                    </div>
+                </div>
+
+                <div class="hero-ilustracao" aria-hidden="true">
+                    <div class="nuvem">☁</div>
+                    <div class="chuva">⋰ ⋰ ⋰ ⋰</div>
+                    <div class="agua">〰 〰 〰</div>
+                    <div class="cidade">⌂　⌂　⌂</div>
+                    <span>HidroAlerta</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="aviso">
+            <div class="container aviso-conteudo">
+                <span class="aviso-icone" aria-hidden="true">ⓘ</span>
+                <p>
+                    <strong>Projeto acadêmico:</strong> as informações
+                    deste site são registros informativos e não substituem
+                    alertas oficiais ou os serviços de emergência.
+                </p>
+            </div>
+        </section>
+
+        <section class="secao container" id="registrar">
+            <div class="titulo-secao">
+                <span class="etiqueta">CONTRIBUA COM OS REGISTROS</span>
+                <h2>Registrar ocorrência</h2>
+                <p>
+                    Preencha os dados abaixo para adicionar uma ocorrência
+                    ao histórico local do sistema.
+                </p>
+            </div>
+
+            <form id="form-ocorrencia" class="cartao formulario">
+                <div class="campo">
+                    <label for="local">Local da ocorrência *</label>
+                    <input
+                        type="text"
+                        id="local"
+                        name="local"
+                        placeholder="Ex.: bairro, rua ou ponto de referência"
+                        maxlength="150"
+                        required
+                    >
+                </div>
+
+                <div class="linha-campos">
+                    <div class="campo">
+                        <label for="data">Data *</label>
+                        <input type="date" id="data" name="data" required>
+                    </div>
+
+                    <div class="campo">
+                        <label for="horario">Horário *</label>
+                        <input type="time" id="horario" name="horario" required>
+                    </div>
+                </div>
+
+                <div class="campo">
+                    <label for="situacao">Situação observada *</label>
+                    <select id="situacao" name="situacao" required>
+                        <option value="">Selecione uma situação</option>
+                        <option value="Registrada">Registrada</option>
+                        <option value="Em acompanhamento">Em acompanhamento</option>
+                        <option value="Normalizada">Normalizada</option>
+                    </select>
+                </div>
+
+                <div class="campo">
+                    <label for="descricao">Descrição da ocorrência *</label>
+                    <textarea
+                        id="descricao"
+                        name="descricao"
+                        rows="4"
+                        maxlength="1000"
+                        placeholder="Descreva o que foi observado no local..."
+                        required
+                    ></textarea>
+                </div>
+
+                <button type="submit" class="botao botao-principal">
+                    + Salvar ocorrência
+                </button>
+
+                <p class="nota-formulario">
+                    * Campos obrigatórios. Evite incluir dados pessoais
+                    de moradores ou pessoas envolvidas.
+                </p>
+
+                <p id="mensagem-formulario" class="mensagem" role="status" aria-live="polite"></p>
+            </form>
+        </section>
+
+        <section class="secao secao-registros" id="ocorrencias">
+            <div class="container">
+                <div class="titulo-secao">
+                    <span class="etiqueta">ACOMPANHAMENTO</span>
+                    <h2>Ocorrências registradas</h2>
+                    <p>
+                        Consulte os registros disponíveis neste navegador.
+                    </p>
+                </div>
+
+                <div class="resumo">
+                    <div class="cartao resumo-item">
+                        <span class="resumo-icone">▤</span>
+                        <div>
+                            <span class="resumo-rotulo">Total de registros</span>
+                            <strong id="total-ocorrencias">0</strong>
+                        </div>
+                    </div>
+
+                    <div class="cartao resumo-item">
+                        <span class="resumo-icone">◷</span>
+                        <div>
+                            <span class="resumo-rotulo">Em acompanhamento</span>
+                            <strong id="total-acompanhamento">0</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="filtros">
+                    <div class="campo busca">
+                        <label for="busca">Pesquisar por local ou descrição</label>
+                        <input
+                            type="search"
+                            id="busca"
+                            placeholder="Digite um local ou palavra..."
+                        >
+                    </div>
+
+                    <div class="campo filtro-situacao">
+                        <label for="filtro-situacao">Filtrar por situação</label>
+                        <select id="filtro-situacao">
+                            <option value="">Todas as situações</option>
+                            <option value="Registrada">Registrada</option>
+                            <option value="Em acompanhamento">Em acompanhamento</option>
+                            <option value="Normalizada">Normalizada</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div id="lista-ocorrencias" class="lista-ocorrencias" aria-live="polite">
+                    <div class="estado-vazio">
+                        <span aria-hidden="true">⌕</span>
+                        <h3>Nenhuma ocorrência por enquanto</h3>
+                        <p>Os registros adicionados aparecerão aqui.</p>
+                    </div>
+                </div>
+
+                <p class="aviso-dados">
+                    Os registros desta versão são armazenados somente
+                    neste navegador. Ainda não há sincronização entre usuários.
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="rodape">
+        <div class="container rodape-conteudo">
+            <a href="#inicio" class="marca marca-rodape">
+                <span class="marca-icone" aria-hidden="true">≋</span>
+                <span>Hidro<span class="destaque">Alerta</span></span>
+            </a>
+
+            <p>Projeto acadêmico • Palmares - PE</p>
+            <p>Informação organizada, comunidade mais consciente.</p>
+        </div>
+    </footer>
+</body>
+</html>
