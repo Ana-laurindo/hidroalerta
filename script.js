@@ -7,6 +7,7 @@ const campoData = document.querySelector("#data");
 const campoHorario = document.querySelector("#horario");
 const campoSituacao = document.querySelector("#situacao");
 const campoDescricao = document.querySelector("#descricao");
+const contadorDescricao = document.querySelector("#contador-descricao");
 const campoBusca = document.querySelector("#busca");
 const campoFiltro = document.querySelector("#filtro-situacao");
 
@@ -16,6 +17,10 @@ const totalAcompanhamento = document.querySelector("#total-acompanhamento");
 const mensagemFormulario = document.querySelector("#mensagem-formulario");
 
 let ocorrencias = carregarOcorrencias();
+function atualizarContadorDescricao() {
+    contadorDescricao.textContent =
+        `${campoDescricao.value.length} / ${campoDescricao.maxLength} caracteres`;
+}
 
 // Define a data atual como valor inicial do formulário.
 const hoje = new Date();
@@ -271,6 +276,7 @@ formulario.addEventListener("submit", evento => {
     }
 
     formulario.reset();
+    atualizarContadorDescricao();
     campoData.value = dataLocal;
 
     mostrarMensagem("Ocorrência registrada com sucesso!", "sucesso");
@@ -314,6 +320,8 @@ function excluirOcorrencia(id) {
 // Atualiza a lista enquanto o usuário pesquisa ou filtra.
 campoBusca.addEventListener("input", renderizarOcorrencias);
 campoFiltro.addEventListener("change", renderizarOcorrencias);
+campoDescricao.addEventListener("input", atualizarContadorDescricao);
+atualizarContadorDescricao();
 
 // Apresenta os registros já salvos ao abrir o site.
 renderizarOcorrencias();
